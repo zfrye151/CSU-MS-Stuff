@@ -1,7 +1,7 @@
 #Zach Frye
 #CSC 500
 #Module 6 Portfolio Milestone
-#2/22/2026
+#3/8/2026
 
 class ShoppingCart(): #create shopping cart class
     customer_name = "none" #defaults
@@ -86,35 +86,36 @@ new_cart.current_date = input()
 print("\nCustomer name:", new_cart.customer_name) #print customer name and current date
 print("Today's date:", new_cart.current_date)
 
-print_menu(new_cart) #print menu and prompt for option
-choice = input() #get user input for menu option
+while True:  # Add a loop here to keep returning to the menu
+    print_menu(new_cart) #print menu and prompt for option
+    choice = input() #get user input for menu option
 
-if choice == 'q': #check if user wants to quit, if so, quit program
-    quit()
-elif choice == 'a': #check if user wants to add item to cart, if so, prompt for item attributes and add to cart
-    new_item = ItemToPurchase() #create new item to purchase object
-    new_cart.add_item(new_item) #call add item method to add item to cart
+    if choice == 'q': #check if user wants to quit, if so, quit program
+        quit()
+    elif choice == 'a': #check if user wants to add item to cart, if so, prompt for item attributes and add to cart
+        new_item = ItemToPurchase() #create new item to purchase object
+        new_cart.add_item(new_item) #call add item method to add item to cart
 
-elif choice == 'r': #check if user wants to remove item from cart, if so, prompt for item name and remove from cart
-    print("REMOVE ITEM FROM CART") #print remove item from cart prompt
-    print("Enter name of item to remove:") #prompt for item name to remove
-    item_name = input()
-    new_cart.remove_item(item_name)
-    
-elif choice == 'c': #check if user wants to change item quantity, if so, prompt for item name and new quantity and update cart
-    print("CHANGE ITEM QUANTITY") #print change item quantity prompt
-    print("Enter the item name:") #prompt for item name to modify
-    item_name = input()
-    new_cart.modify_item(item_name)
+    elif choice == 'r': #check if user wants to remove item from cart, if so, prompt for item name and remove from cart
+        print("REMOVE ITEM FROM CART") #print remove item from cart prompt
+        print("Enter name of item to remove:") #prompt for item name to remove
+        item_name = input()
+        new_cart.remove_item(item_name)
+        
+    elif choice == 'c': #check if user wants to change item quantity, if so, prompt for item name and new quantity and update cart
+        print("CHANGE ITEM QUANTITY") #print change item quantity prompt
+        print("Enter the item name:") #prompt for item name to modify
+        item_name = input()
+        new_cart.modify_item(item_name)
 
-elif choice == 'i': #check if user wants to output items' descriptions, if so, print descriptions of items in cart and reprint menu options later
-    print("OUTPUT ITEMS' DESCRIPTIONS")
-    new_cart.print_descriptions()
-    print("\n") #reprint menu options
-elif choice == 'o': #check if user wants to output shopping cart, if so, print total cost of items in cart and reprint menu options later
-    print("OUTPUT SHOPPING CART")
-    new_cart.print_total()
-    print("\n")
-else: #check for invalid option, if so, print error message and reprint menu options until valid option is chosen
-    print("Invalid option, please choose again.")
-    choice = input()
+    elif choice == 'i': #check if user wants to output items' descriptions, if so, print descriptions of items in cart and reprint menu options later
+        print("OUTPUT ITEMS' DESCRIPTIONS")
+        new_cart.print_descriptions()
+        print("\n") #reprint menu options
+    elif choice == 'o': #check if user wants to output shopping cart, if so, print total cost of items in cart and reprint menu options later
+        print("OUTPUT SHOPPING CART")
+        new_cart.print_total()
+        print("\n")
+    else: #check for invalid option, if so, print error message and reprint menu options until valid option is chosen
+        print("Invalid option, please choose again.")
+        # The loop will continue and prompt for input again
